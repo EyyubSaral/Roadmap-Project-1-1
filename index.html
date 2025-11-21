@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main {
+        display: flex;
+        gap: 10px;
+      }
+
+      .span {
+        padding: 5px 10px;
+        background-color: lightgray;
+        color: black;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 5px;
+        transition: all 0.2s ease;
+        font-weight: 500;
+        border: 1px solid transparent;
+      }
+
+      #tabs span:hover {
+        background-color: #e0e0e0;
+      }
+
+      #tabs span.active {
+        background-color: #ff4d4d;
+        color: white;
+        border-color: #ff1a1a;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .main > div {
+        padding: 15px;
+        background-color: #fafafa;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+
+        visibility: hidden;
+      }
+
+      .main > div:first-child {
+        visibility: visible;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav id="tabs">
+      <span id="first">First Tab</span>
+      <span id="second">Second Tab</span>
+      <span id="third">Third Tab</span>
+      <span id="fourth">Fourth Tab</span>
+    </nav>
+    <main class="main">
+      <div id="first-p">
+        <h1>First Header</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nemo
+          laboriosam iure officia numquam minus eius, iusto officiis facilis
+          autem tenetur sapiente magnam repellendus, quis, dolores iste odit.
+          Rem, non.
+        </p>
+      </div>
+      <div id="second-p">
+        <h1>Second Header</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. At placeat
+          optio, nobis quisquam deserunt asperiores animi eveniet culpa
+          consequatur corporis temporibus sit nam. Dolores ratione eveniet minus
+          reiciendis, consequuntur odit?
+        </p>
+      </div>
+      <div id="third-p">
+        <h1>Third Header</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique
+          saepe reiciendis quas dolorem voluptas harum impedit nulla, adipisci
+          deleniti sint laudantium? Placeat suscipit, velit voluptas iure nobis
+          eum perspiciatis mollitia.
+        </p>
+      </div>
+      <div id="fourth-p">
+        <h1>Fourth Header</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste minima
+          saepe repudiandae consectetur! Veritatis molestias, culpa, iste
+          laborum, illo mollitia quisquam dolore consectetur eveniet amet est
+          doloribus dicta voluptatum accusantium?
+        </p>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    const tabs = document.getElementById("tabs");
+    let obj = { first: true, second: false, third: false, fourth: false };
+
+    tabs.addEventListener("click", (e) => {
+      const id = e.target.id;
+
+      for (let key in obj) {
+        document.getElementById(`${key}-p`).style.visibility = "hidden";
+        document.getElementById(`${key}`).style.color = "black";
+        obj[key] = false;
+      }
+
+      document.getElementById(`${id}-p`).style.visibility = "visible";
+      document.getElementById(`${id}`).style.color = "red";
+      obj[id] = true;
+
+      console.log(obj);
+    });
+  </script>
+</html>
